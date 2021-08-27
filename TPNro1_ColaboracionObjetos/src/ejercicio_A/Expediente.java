@@ -22,21 +22,19 @@ public class Expediente {
     private String ambito;
 
     //relaciones
-    ArrayList<Control> controles;
+    private ArrayList<Control> controles;
 
-    //relación nreflexiva
-    Expediente ex;
-    ArrayList<Expediente> expedientes;
+    //relación reflexiva
+    private Expediente expPadre;
+    private ArrayList<Expediente> expedientesHijos;
 
     public Expediente() {
     }
 
-    public Expediente(int id, String letra) {
+    public Expediente(int id, String descripcion) {
         this.id = id;
-        this.letra = letra;
+        this.descripcion = descripcion;
     }
-    
-    
 
     public ArrayList<Control> getControles() {
         return controles;
@@ -46,20 +44,20 @@ public class Expediente {
         this.controles = controles;
     }
 
-    public Expediente getEx() {
-        return ex;
+    public Expediente getExpPadre() {
+        return expPadre;
     }
 
-    public void setEx(Expediente ex) {
-        this.ex = ex;
+    public void setExpPadre(Expediente ex) {
+        this.expPadre = ex;
     }
 
-    public ArrayList<Expediente> getExpedientes() {
-        return expedientes;
+    public ArrayList<Expediente> getExpedientesHijos() {
+        return expedientesHijos;
     }
 
-    public void setExpedientes(ArrayList<Expediente> expedientes) {
-        this.expedientes = expedientes;
+    public void setExpedientesHijos(ArrayList<Expediente> expedientesHijos) {
+        this.expedientesHijos = expedientesHijos;
     }
 
     public int getId() {
@@ -122,10 +120,10 @@ public class Expediente {
 
             if (controles.get(i).isEsObligatorio()) {
                 listaControles += controles.get(i).getDenominacion();
-                if(i!=controles.size()-1){
-                listaControles+=", ";
-                } else{
-                 listaControles+=".";
+                if (i != controles.size() - 1) {
+                    listaControles += ", ";
+                } else {
+                    listaControles += ".";
                 }
             }
         }
@@ -133,28 +131,34 @@ public class Expediente {
     }
 
     public boolean getEstadoControles() {
-        boolean aprobados;
+
         for (Control control : controles) {
-            if (!(control.isEsObligatorio())) {
-                return false;
+            if (control.isEsObligatorio()) {
+                if (!(control.getEstadoControl().isAprobado())) {
+                    return false;
+                }
             }
         }
         return true;
     }
 
-    public List<Expediente> listaExpedientes(List<Expediente> listaEx, Expediente exp1) {
-        return listaRecursion(expedientes, exp1);
-
+    public List<Expediente> listaExpedientes() {
+        
+        List<Expediente> listaRecursiva = new ArrayList();
+        
+        listaRecursion(this, listaRecursiva);
+        
+        return listaRecursiva;
     }
 
-    public List<Expediente> listaRecursion(List<Expediente> listaExpedientes, Expediente exp2) {
-        listaExpedientes.add(exp2);
-        
-        if (listaExpedientes.isEmpty()) {
-            return listaExpedientes;
-        } else {
-            return listaRecursion(listaExpedientes, exp2);
-        }
+    public void listaRecursion(Expediente exp, List<Expediente> listaExpedientes) {
 
+            listaExpedientes.add(exp);
+        if (exp.getExpedientesHijos() != null) {
+            for (Expediente expHijo : exp.getExpedientesHijos()) {
+                listaRecursion(expHijo, listaExpedientes);
+            }
+
+        }
     }
 }

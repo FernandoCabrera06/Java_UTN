@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ejercicio_A;
 
 import java.util.ArrayList;
@@ -13,14 +12,14 @@ import java.util.ArrayList;
  * @author Fernando
  */
 public class Control {
-private int id;
-private String denominacion;
-private boolean esObligatorio;
+
+    private int id;
+    private String denominacion;
+    private boolean esObligatorio;
 
 //relaciones
-ArrayList<Expediente> expedientes;
-EstadoControl estadoControl;
-
+    private ArrayList<Expediente> expedientes;
+    private EstadoControl estadoControl;
 
     public Control() {
     }
@@ -31,7 +30,23 @@ EstadoControl estadoControl;
         this.esObligatorio = esObligatorio;
         this.estadoControl = estadoControl;
     }
-    
+
+    public ArrayList<Expediente> getExpedientes() {
+        return expedientes;
+    }
+
+    public void setExpedientes(ArrayList<Expediente> expedientes) {
+        this.expedientes = expedientes;
+    }
+
+    public EstadoControl getEstadoControl() {
+        return estadoControl;
+    }
+
+    public void setEstadoControl(EstadoControl estadoControl) {
+        this.estadoControl = estadoControl;
+    }
+
 
     public int getId() {
         return id;
@@ -56,6 +71,5 @@ EstadoControl estadoControl;
     public void setEsObligatorio(boolean esObligatorio) {
         this.esObligatorio = esObligatorio;
     }
-
 
 }

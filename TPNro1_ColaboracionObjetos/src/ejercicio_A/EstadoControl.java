@@ -19,7 +19,7 @@ public class EstadoControl {
 
 
     //relaciones
-    ArrayList<Control> controles;
+    private ArrayList<Control> controles;
     
     //contructores
     public EstadoControl() {
@@ -44,6 +44,14 @@ public class EstadoControl {
 
     public void setAprobado(boolean aprobado) {
         this.aprobado = aprobado;
+    }
+
+    public ArrayList<Control> getControles() {
+        return controles;
+    }
+
+    public void setControles(ArrayList<Control> controles) {
+        this.controles = controles;
     }
     
     
