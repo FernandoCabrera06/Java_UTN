@@ -27,14 +27,14 @@ public class Asistencia {
     public Asistencia() {
     }
 
-    public Asistencia(long id, String tipo, Date fecha, int hora, int minuto) {
+    public Asistencia(long id, String tipo, Date fecha, int hora, int minuto, Empleado empleado) {
         this.id = id;
         this.tipo = tipo;
         this.fecha = fecha;
         this.hora = hora;
         this.minuto = minuto;
+        this.empleado = empleado;
     }
-
     
     
     public long getId() {
@@ -85,10 +85,13 @@ public class Asistencia {
         this.empleado = empleado;
     }
 
+
     @Override
     public String toString() {
-        return "Asistencia{" + "id=" + id + ", tipo=" + tipo +", hora=" + hora + ", minuto=" + minuto + '}';
+        return "Asistencia{" + "id=" + id + ", tipo=" + tipo + ", fecha=" + Utilidades.convertirDateToString(fecha)+ ", hora=" + hora + ", minuto=" + minuto + ", empleado=" + empleado + '}';
     }
+    
+    
     
     
 }

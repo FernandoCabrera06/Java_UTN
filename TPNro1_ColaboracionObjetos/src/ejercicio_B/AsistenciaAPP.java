@@ -16,15 +16,15 @@ public class AsistenciaAPP {
     
     public static void main(String[] args) {
         
-        Empleado empleado1 = new Empleado();
+        Empleado empleado1 = new Empleado("Fernando Cabrera");
         
         RegimenHorario regimen2021 = new RegimenHorario(2021, 8, 30, 13, 30, empleado1);
         empleado1.setRegimenHorario(regimen2021);
         
-        Asistencia asistencia1 = new Asistencia(23, "E", (new Date(2021, 10, 8)), 8, 20);
-        Asistencia asistencia2 = new Asistencia(24, "E", (new Date(2021, 10, 9)), 8, 50);
-        Asistencia asistencia3 = new Asistencia(38, "E", (new Date(2021, 11, 14)), 8, 25);
-        Asistencia asistencia4 = new Asistencia(0023, "E", (new Date(2021, 11, 15)), 8, 46);
+        Asistencia asistencia1 = new Asistencia(23, "E", (new Date(2021, 10, 8)), 8, 20,empleado1);
+        Asistencia asistencia2 = new Asistencia(24, "E", (new Date(2021, 10, 9)), 8, 50,empleado1);
+        Asistencia asistencia3 = new Asistencia(38, "E", (new Date(2021, 11, 14)), 8, 25,empleado1);
+        Asistencia asistencia4 = new Asistencia(0023, "E", (new Date(2021, 11, 15)), 8, 46,empleado1);
         
         empleado1.addAsistencias(asistencia1);
         empleado1.addAsistencias(asistencia2);

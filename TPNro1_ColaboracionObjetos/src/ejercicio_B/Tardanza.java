@@ -19,6 +19,9 @@ public class Tardanza {
     private int hora;
     private int minuto;
 
+    //relación
+    private Empleado empleado;
+
     //constuctores
     public Tardanza() {
     }
@@ -31,9 +34,6 @@ public class Tardanza {
         this.minuto = minuto;
         this.empleado = empleado;
     }
-
-    //relación
-    private Empleado empleado;
 
     public long getId() {
         return id;
@@ -82,8 +82,10 @@ public class Tardanza {
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
     }
+
     @Override
     public String toString() {
-        return "Tardanza{" + "id=" + id + ", tipo=" + tipo +", hora=" + hora + ", minuto=" + minuto + '}';
+        return "Tardanza{" + "id=" + id + ", tipo=" + tipo + ", fecha=" + Utilidades.convertirDateToString(fecha) + ", hora=" + hora + ", minuto=" + minuto + ", empleado=" + empleado + '}';
     }
+
 }
