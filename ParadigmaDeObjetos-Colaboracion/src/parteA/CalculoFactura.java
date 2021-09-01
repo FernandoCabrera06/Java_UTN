@@ -42,7 +42,8 @@ public class CalculoFactura {
         factura1.setCuitCliente(entradaNumerica.nextLong());
 
         System.out.println("--------Tipo de pago--------");
-
+        
+      
         String tipoDePago;
         while (true) {
             System.out.println("[C] contado\n"
